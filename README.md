@@ -175,13 +175,13 @@ source .venv/bin/activate
 Install the dependencies once the project's `requirements.txt` is available:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt   # use requirements-dev.txt to run tests (pytest)
 ```
 
 Start the backend using the entry point configured in the project. For example, if the application entry point is `app.main:app`:
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload   # serves http://127.0.0.1:8000
 ```
 
 ### 3. Configure Local AI
@@ -238,16 +238,16 @@ Local inference does not automatically guarantee complete privacy. Network acces
 
 The initial development priorities are:
 
-- [ ] Repository structure analysis
-- [ ] Java and Spring Boot source-code analysis
-- [ ] API endpoint discovery
-- [ ] Controller-to-service relationship mapping
-- [ ] Git history investigation
-- [ ] Documentation inconsistency detection
+- [x] Repository structure analysis
+- [x] Java and Spring Boot source-code analysis
+- [x] API endpoint discovery
+- [x] Controller-to-service relationship mapping
+- [x] Git history investigation
+- [x] Documentation inconsistency detection
 - [ ] Ollama integration
 - [ ] Evidence-linked AI answers
-- [ ] Markdown report generation
-- [ ] Automated tests and example repository
+- [x] Markdown report generation
+- [x] Automated tests and example repository
 - [ ] Installation and usage documentation
 
 Update these checkboxes as the corresponding features are implemented and tested.
@@ -348,3 +348,18 @@ This project will use an open-source license. Add the appropriate `LICENSE` file
 Built as an exploration of local AI, software archaeology, and the forgotten knowledge hidden inside legacy codebases.
 
 **The developers may be gone. The code is still talking.** 🕯️
+
+---
+
+## 🧪 Try It on the Bundled Example
+
+```bash
+uvicorn app.main:app --reload
+cd frontend && npm install && npm run dev
+```
+
+Open the Vite URL and analyze the absolute path of `examples/sample-spring-app`. Configure Ollama with `OLLAMA_URL` (default `http://127.0.0.1:11434`) and `OLLAMA_MODEL` (default `qwen2.5:7b`). Without Ollama the app still returns the retrieved evidence.
+
+Run the tests with `pip install -r requirements-dev.txt && pytest`.
+
+**Status:** the Ollama integration is covered by mocked tests only and has not been run against a live model; its checkboxes above stay unchecked until it has.
